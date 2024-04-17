@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('C:\Users\Meisha\OneDrive\Desktop\Project 3\headsets.jpg.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    #cp {
+      background: linear-gradient(to right, #add8e6, #FFCCCC);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      width: 600px;
+      margin: 100px auto 0;
+      text-align: center;
+    }
+
+    button {
+      display: inline-block;
+      background-color: #FFCCFF;
+      color: #333333;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      width: 100px;
+      cursor: pointer;
+      border-radius: 20px;
+      margin: 5px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-style: italic;
+      color: #555;
+      font-weight: bold;
+    }
+
+    #volumeUp,
+    #volumeDown {
+      margin-top: 20px;
+    }
+  </style>
+  <title>Music Player</title>
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+  <script>
+    var main = function() {
+      var muted = false;
+      var volume = 1; 
+
+      // Play button
+      $('#play').click(function() {
+        console.log("Play button clicked"); 
+        $('#message').text("Playing track");
+        var player = $('#player')[0]; 
+        player.play(); 
+      });
+
+      // Pause button
+      $('#pause').click(function() {
+        console.log("Pause button clicked"); 
+        $('#message').text("Track paused");
+        var player = $('#player')[0]; 
+        player.pause(); // Pause the audio
+      });
+
+      // Mute button
+      $('#mute').click(function() {
+        console.log("Mute button clicked"); 
+        muted = !muted; // Toggle the muted variable
+        $('#player').prop('muted', muted);
+        // Update message based on mute status
+        if (muted) {
+          $('#message').text("Track muted");
+        } else {
+          $('#message').text("Track unmuted");
+        }
+      });
+
+      // Unmute button
+      $('#unmute').click(function() {
+        console.log("Unmute button clicked"); // Debugging statement
+        muted = false; // Set muted to false to unmute
+        $('#player').prop('muted', muted); // Set the muted property of the player
+
+        // Update message
+        $('#message').text("Track unmuted");
+      });
+
+      // Stop button
+      $('#stop').click(function() {
+        console.log("Stop button clicked"); // Debugging statement
+        $('#message').text("Track stopped");
+        var player = $('#player')[0]; // Get the raw DOM element
+        player.pause(); // Pause the audio
+        player.currentTime = 0; // Set the currentTime of the track to 0
+      });
+
+      // Volume Up button
+      $('#volumeUp').click(function() {
+        console.log("Volume Up button clicked"); // Debugging statement
+        if (volume < 1) {
+          volume += 0.1; // Increase volume by 0.1
+          $('#player').prop('volume', volume); // Set the volume property of the player
+          $('#message').text("Volume up: " + Math.round(volume * 10) / 10); // Update message
+        }
+      });
+
+      // Volume Down button
+      $('#volumeDown').click(function() {
+        console.log("Volume Down button clicked"); // Debugging statement
+        if (volume > 0) {
+          volume -= 0.1; // Decrease volume by 0.1
+          $('#player').prop('volume', volume); // Set the volume property of the player
+          $('#message').text("Volume down: " + Math.round(volume * 10) / 10); // Update message
+        }
+      });
+    };
+
+    $(document).ready(main);
+  </script>
+</head>
+
+<body>
+  <div id="cp">
+    <button id="play">Play</button>
+    <button id="stop">Stop</button>
+    <button id="pause">Pause</button>
+    <button id="mute">Mute</button>
+    <button id="unmute">Unmute</button>
+    <button id="volumeUp">Volume Up</button>
+    <button id="volumeDown">Volume Down</button>
+    <p id="message">Waiting</p>
+  </div>
+  <audio id="player">
+    <source src="music/song1.mp3" type="audio/mpeg">
+  </audio>
+</body>
+
+</html>
