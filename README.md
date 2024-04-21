@@ -5,13 +5,13 @@ This repository contains three web development projects hosted using GitHub Page
 
 ## Project 1: Portfolio Website
 
-- **Description:** Brief description of the project.
-- **Technologies:** List of technologies used in the project (e.g., HTML, CSS, JavaScript).
+- **Description:** An interactive resume created using HTML.
+- **Technologies:** HTML
 - **Live Demo:** Link to the live demo of the project.
 
-## Project 2: Blogging Platform
+## Project 2: Stylish Resume
 
-- **Description:** Brief description of the project.
+- **Description:** A stylish online resume presenting my qualifications and experience. 
 - **Technologies:** HTML, CSS
 - **Live Demo:** Link to the live demo of the project.
 
